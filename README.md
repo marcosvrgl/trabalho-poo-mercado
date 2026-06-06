@@ -8,7 +8,7 @@ O sistema tem como objetivo simular o funcionamento básico de um mercado, permi
 
 ## Funcionalidades
 
-- Acesso de funcionário
+- Acesso de funcionário por senha
 - Cadastro de funcionários
 - Cadastro de clientes
 - Listagem de estoque
@@ -16,7 +16,9 @@ O sistema tem como objetivo simular o funcionamento básico de um mercado, permi
 - Reposição de produtos
 - Remoção de produtos
 - Compra de produtos por clientes
+- Atualização automática do estoque após a compra
 - Finalização da compra com escolha da forma de pagamento
+- Tratamento de erros para entradas inválidas
 
 ## Estrutura do projeto
 
