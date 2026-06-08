@@ -8,10 +8,10 @@ class Estoque:
         arquivo_path = "../arquivos/estoque.txt"
 
         if os.path.exists(arquivo_path): # verifica se o arquivo existe, se sim, lê o conteúdo e armazena em estoque, caso contrario, cria um arquivo vazio
-            self.estoque = open(arquivo_path, "r").readlines()
+            self.estoque = open(arquivo_path, "r", encoding="utf-8").readlines()
 
         else:
-            open(arquivo_path, "w").close()
+            open(arquivo_path, "w", encoding="utf-8").close()
             self.estoque = []
 
         self.ordenar_estoque() # ordena o estoque ao iniciar a classe
@@ -19,7 +19,7 @@ class Estoque:
     def ordenar_estoque(self):
         self.estoque.sort(key=lambda x: x.split(" - ")[0].lower()) # ordena o produto de forma alfabética / lambda é uma função oculta que recebe um produto e retorna o nome em letras minusculas para comparação
 
-        with open("../arquivos/estoque.txt", "w") as f: # reescreve o arquivo com o estoque ordenado
+        with open("../arquivos/estoque.txt", "w", encoding="utf-8") as f: # reescreve o arquivo com o estoque ordenado
             f.writelines(self.estoque)
 
     def adicionar_produto(self):
@@ -91,7 +91,7 @@ class Estoque:
                 else:
                     self.estoque[i] = f"{partes[0]} - {partes[1]} - {int(nova_qtd)} unidades\n"
 
-                with open("../arquivos/estoque.txt", "w") as f:
+                with open("../arquivos/estoque.txt", "w", encoding="utf-8") as f:
                     f.writelines(self.estoque)
                 break # sai do loop após encontrar o produto
         else:
@@ -115,14 +115,14 @@ class Estoque:
                 else:
                     self.remover_produto(nome)
 
-                with open("../arquivos/estoque.txt", "w") as f:
+                with open("../arquivos/estoque.txt", "w", encoding="utf-8") as f:
                     f.writelines(self.estoque)
                 break # sai do loop após encontrar o produto
 
     def remover_produto(self, nome: str):
         # percorre a lista de estoque e remove o produto que começa com o nome fornecido
         self.estoque = [produto for produto in self.estoque if not produto.startswith(nome)]
-        open("../arquivos/estoque.txt", "w").write("".join(self.estoque))
+        open("../arquivos/estoque.txt", "w", encoding="utf-8").write("".join(self.estoque))
         print(f"{nome} removido do estoque.")
         input("Aperte Enter para continuar.")
 
