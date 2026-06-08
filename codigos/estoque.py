@@ -77,7 +77,7 @@ class Estoque:
         self.estoque.append(f"{produto}\n")
         self.ordenar_estoque()
         print(f"Produto adicionado.")
-        continuar = input("Aperte Enter para continuar...")
+        input("Aperte Enter para continuar.")
 
     def adicionar_qtd(self, nome: str, qtd: float):
         for i, produto in enumerate(self.estoque): # percorre o estoque com indice e valor
@@ -124,7 +124,14 @@ class Estoque:
         self.estoque = [produto for produto in self.estoque if not produto.startswith(nome)]
         open("../arquivos/estoque.txt", "w").write("".join(self.estoque))
         print(f"{nome} removido do estoque.")
-        continuar = input("Aperte Enter para continuar...")
+        input("Aperte Enter para continuar.")
+
+    def buscar_produto(self, nome_busca): # busca um produto ignorando letras maiúsculas e minúsculas
+        for item in self.estoque:
+            nome_item = item.strip().split(" - ")[0]
+            if nome_item.lower() == nome_busca.lower():
+                return item
+        return None
 
     def listar_estoque(self):
         
@@ -144,5 +151,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-        
